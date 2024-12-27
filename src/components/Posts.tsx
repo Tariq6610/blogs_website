@@ -1,23 +1,24 @@
 import axios from "axios"
-import Card from "./Card";
+import Filter from "./Filter";
 
 interface Data{
     id: string,
     image: string,
     name: string,
     tags:[],
-    ingredients: []
+    ingredients: [],
+    mealType:string[]
 }
 
 const Posts = async () => {
     const res = await axios.get("https://dummyjson.com/recipes");
-    const recipes = res.data.recipes
-  return (
-    <div className="flex flex-wrap max-w-[1440px] mx-auto gap-4 p-4 justify-center ">
-      {recipes.map((data : Data) => (
-      <Card key={data.id} data={data}/>
-    ))}
-    </div>
+    const recipes : Data[]= res.data.recipes;
+    const categories = Array.from(new Set(recipes.map((val) => val.mealType[0])));
+    console.log(categories)
+    return (
+    <>
+    <Filter categories={categories} recipes={recipes} />
+    </>
   )
 }
 
