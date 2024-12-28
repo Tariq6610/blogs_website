@@ -30,22 +30,19 @@ const Filter = ({categories, recipes} : Props) => {
     function filterDishes(){
         const filterdList = recipes.filter((recipe) => recipe.mealType[0] === Selectedcategory)
         if(filterdList.length !== 0){
-            console.log("filterdList ==>",filterdList)
             setDishes(filterdList)
         }else{
             setDishes(recipes)
-            console.log("filterdList ==>",filterdList)
         }
     }
 
     useEffect(()=>{
         filterDishes()
-        console.log(Selectedcategory)
     },[Selectedcategory])
 
   return (
     <>
-         <div className='max-w-[813px] mx-auto text-center min-h-400px'>
+         <div className='max-w-[813px] mx-auto px-[10px] text-center min-h-400px'>
         <div className='max-w-[420px] mx-auto'>
         <h1 className='xl:text-[40px] md:text-[30px] text-[24px] font-bold leading-[40px] lg:mb-[12px] mb:8px'>EMBARK ON A JOURNEY</h1>
         <p className=''>With our diverse collection of recipes we have something to satisfy every palate.</p>
@@ -60,7 +57,7 @@ const Filter = ({categories, recipes} : Props) => {
         </div>
     </div>
     <h1 className="sm:px-6 px-3 xl:text-[40px] md:text-[30px] text-[24px]">Featured Recipes : <span className='xl:text-[30px] md:text-[24px] text-[18px] italic text-red-500'>{Selectedcategory}</span></h1>
-    <div className="flex flex-wrap max-w-[1440px] mx-auto gap-4 p-4 justify-center ">
+    <div className="flex px-[10px] flex-wrap max-w-[1440px] mx-auto gap-4 p-4 justify-center ">
       {Dishes.map((data : Data) => (
       <Card key={data.id} data={data}/>
     ))}
