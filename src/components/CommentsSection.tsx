@@ -44,7 +44,7 @@ import { FaUserCircle } from "react-icons/fa";
 
   return (
     <>
-     <div className="flex justify-between  items-center mb-2">
+     <div className="flex justify-between items-center mb-2">
         <h2 className="text-lg lg:text-2xl font-bold text-gray-900 ">Discussions </h2>
     </div>
     {comments && comments[CardId].map((user, ind)=>(
